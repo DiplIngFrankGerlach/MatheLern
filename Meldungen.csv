@@ -1,0 +1,16 @@
+Schluessel;Deutsch;Englisch;Franzoesisch
+ZufaelligeAufgaben;Zufaellige Aufgaben:;Random Tasks;tâches aléatoires
+DrueckeEZumBeendenSonstLoesung;Druecke E zum Beenden, sonst die Loesung;Press E to End or enter solution;Appuyez sur E pour quitter, sinon la solution s'affichera
+Richtig;Richtig;Right;Correct
+Falsch;Falsch;False;Incorrect
+ZehnerUebergaenge;ZehnerUebergaenge;Carrying over tens;Transitions de dizaines
+Das_kleine_Einmaleins_der_Multiplikation;Das kleine Einmaleins der Multiplikation;The basic multiplication table;Les bases de la multiplication
+Erste_100_Primzahlen;Erste 100 Primzahlen;First 100 prime numbers;Les 100 premiers nombres premiers 
+Waehle_aus;Wähle aus;Choose;Choisissez parmi
+Additions_Test_Kommando;Additions-Test=AT;Addition-Test=AT;Test d'addition=AT
+Multiplikations_Test_Kommando;Multiplikations-Test=MT;Multiplication-Test=MT;Test de multiplication=MT
+Einmaleins_Test_Kommando;Einmaleins-Multiplikation=EM;The basic multiplication table=EM;Tables de multiplication=EM
+Erste_100_Primzahlen_Kommando;Erste 100 Primzahlen=EP;First 100 prime numbers=EP;Les 100 premiers nombres premiers=EP
+Zehneruebergaenge_Kommando;Zehneruebergaenge=ZU;Carrying over tens=ZU;Transitions de dizaines=ZU
+Division_Test_Kommando;Divisionstest=DT;Division Test=DT;Test de division=DT
+Abbruch_Kommando;Abbruch: CTRL-C;Stop program:CTRL-C;Fin du programme:CTRL-C
