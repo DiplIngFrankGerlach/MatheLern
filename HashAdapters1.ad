@@ -1,0 +1,13 @@
+
+
+/*This must be a separate Adapters file, because we first
+  need a full declaration of SPHT_String_16_String_16 ready
+  to be imported in the compilation of Assigner_HT_String
+*/
+
+class Assigner_HT_String
+{
+methods:
+         static void assign(&SPHT_String_16_String_16* x1,
+                            &SPHT_String_16_String_16* x2);
+};

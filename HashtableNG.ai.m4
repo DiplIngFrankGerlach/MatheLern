@@ -2,33 +2,33 @@
 
 define(SPHT_IMPL,
 
-  SPHT_Entry_$1_$2::SPHT_Entry_$1_$2()
+  SPHT_Entry_$1::SPHT_Entry_$1()
   {
      is_used = 0;
   }
  
 
-  SPHT_$1_$2::SPHT_$1_$2()
+  SPHT_$1::SPHT_$1()
   {
      this.clear();
   }
 
-  void SPHT_$1_$2::resetIterator()
+  void SPHT_$1::resetIterator()
   {
     iterator_pos = 0;
     iterator_next = NULL;
   }
 
-  void SPHT_$1_$2::clear()
+  void SPHT_$1::clear()
   {
      numberOfEntries = 0;
-     _elements = new SPHT_Entry_$1_$2[3];
+     _elements = new SPHT_Entry_$1[3];
   }
 
-  int SPHT_$1_$2::nextElem(&$1 key,&$2 value)
+  int SPHT_$1::nextElem(&$2 key,&$3 value)
   {
-     var $5 ak;
-     var $6 av;
+     var $6 ak;
+     var $7 av;
      if( iterator_next != NULL )
      {
          ak.assign(key,iterator_next.key);
@@ -63,21 +63,21 @@ define(SPHT_IMPL,
      return 1;
   }
 
-  int SPHT_$1_$2::size()
+  int SPHT_$1::size()
   {
      return numberOfEntries;
   }
 
-  void SPHT_$1_$2::insertInternally(*SPHT_Entry_$1_$2 bins[],
-                                                    &$1 key,
-                                                    &$2 value)
+  void SPHT_$1::insertInternally(*SPHT_Entry_$1 bins[],
+                                 &$2 key,
+                                 &$3 value)
   {
 
 
-      var $3 hac;
-      var $4 coac;
-      var $5 ak;
-      var $6 av;
+      var $4 hac;
+      var $5 coac;
+      var $6 ak;
+      var $7 av;
       var int hc = hac.hash(key);
       var int m1 = -1;
       if( hc < 0 )
@@ -89,10 +89,10 @@ define(SPHT_IMPL,
 
       if( (bins[pos].is_used != 0) && (coac.compare(bins[pos].key,key) == 0) )
       {
-          var SPHT_Entry_$1_$2* entry = bins[pos].next;
+          var SPHT_Entry_$1* entry = bins[pos].next;
           if( entry == NULL )
           {
-             bins[pos].next = new SPHT_Entry_$1_$2;
+             bins[pos].next = new SPHT_Entry_$1;
              bins[pos].next.is_used = 1;
              ak.assign(bins[pos].next.key,key);
              av.assign(bins[pos].next.value,value);
@@ -104,7 +104,7 @@ define(SPHT_IMPL,
              {
                   if( entry.next == NULL )
                   {
-                     entry.next = new SPHT_Entry_$1_$2;
+                     entry.next = new SPHT_Entry_$1;
                      entry.next.is_used = 1;
                      ak.assign(entry.next.key,key);
                      av.assign(entry.next.value,value);
@@ -130,12 +130,12 @@ define(SPHT_IMPL,
       }
   }
 
-  int SPHT_$1_$2::search(&$1 key,&$2 value)
+  int SPHT_$1::search(&$2 key,&$3 value)
   {
-      var $3 hac;
-      var $4 coac;
-      var $5 ak;
-      var $6 av;
+      var $4 hac;
+      var $5 coac;
+      var $6 ak;
+      var $7 av;
       var int hc = hac.hash(key);
       var int m1 = -1;
       if( hc < 0 )
@@ -153,7 +153,7 @@ define(SPHT_IMPL,
           }
           else
           {
-             var SPHT_Entry_$1_$2* entry = _elements[pos].next;
+             var SPHT_Entry_$1* entry = _elements[pos].next;
              while( entry != NULL )
              {
                 if( coac.compare(entry.key,key) == 1 )
@@ -169,7 +169,7 @@ define(SPHT_IMPL,
       return 0;    
   }
 
-  void SPHT_$1_$2::insert(&$1 key,&$2 value)
+  void SPHT_$1::insert(&$2 key,&$3 value)
   {
       if( numberOfEntries < 200000000 )
       {
@@ -178,10 +178,10 @@ define(SPHT_IMPL,
          if( nep1  > limit )
          {
             var int newCap = (_elements.sz + 1) * 2;
-            var *SPHT_Entry_$1_$2 newElements[] = new SPHT_Entry_$1_$2[newCap];
+            var *SPHT_Entry_$1 newElements[] = new SPHT_Entry_$1[newCap];
 
-            var $1 key2;
-            var $2 value2;
+            var $2 key2;
+            var $3 value2;
             this.resetIterator();
             while(this.nextElem(key2,value2) )
             {
@@ -194,12 +194,12 @@ define(SPHT_IMPL,
       }
   }
 
-  void SPHT_$1_$2::del(&$1 key)
+  void SPHT_$1::del(&$2 key)
   {
-      var $3 hac;
-      var $4 coac;
-      var $5 ak;
-      var $6 av;
+      var $4 hac;
+      var $5 coac;
+      var $6 ak;
+      var $7 av;
       var int hc = hac.hash(key);
       var int m1 = -1;
       if( hc < 0 )
@@ -212,7 +212,7 @@ define(SPHT_IMPL,
       {
           if( coac.compare(_elements[pos].key,key) == 0 )
           {
-              var SPHT_Entry_$1_$2* entry = _elements[pos].next;
+              var SPHT_Entry_$1* entry = _elements[pos].next;
               if( (entry != NULL) && (coac.compare(entry.key,key) == 1))
               {
                  _elements[pos].next = entry.next;
@@ -220,7 +220,7 @@ define(SPHT_IMPL,
               }
               else
               {
-                 var SPHT_Entry_$1_$2* previousEntry;
+                 var SPHT_Entry_$1* previousEntry;
                  do
                  {
                     previousEntry = entry; 
@@ -239,7 +239,7 @@ define(SPHT_IMPL,
           {
               if( _elements[pos].next != NULL)
               {
-                 var SPHT_Entry_$1_$2* entryNext = _elements[pos].next;
+                 var SPHT_Entry_$1* entryNext = _elements[pos].next;
                  ak.assign(_elements[pos].key,entryNext.key);
                  av.assign(_elements[pos].value,entryNext.value);
                  _elements[pos].next = entryNext.next;
@@ -253,8 +253,3 @@ define(SPHT_IMPL,
       } 
   }
 )
-
-SPHT_IMPL(String_16,String_16,Hash_String_16,Compare_String_16,Assigner_String_16,Assigner_String_16)
-SPHT_IMPL(longlong,String_16,Hash_longlong,Compare_longlong,Assigner_longlong,Assigner_String_16)
-
-SPHT_IMPL(longlong,int,Hash_longlong,Compare_longlong,Assigner_longlong,Assigner_int)

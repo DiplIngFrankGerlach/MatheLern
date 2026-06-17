@@ -1,6 +1,7 @@
 Import
 {
-"HashAdapters.ad"	 
+"Strings.ad",
+"HashAdapters0.ad"	 
 }
 
 
@@ -44,3 +45,5 @@ void Assigner_double::assign(&double x1,double x2)
 {
    x1 = x2;
 }
+
+

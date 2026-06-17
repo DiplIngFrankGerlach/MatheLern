@@ -98,10 +98,10 @@ erzeugeGenerischeKlassen()
    m4 Strings.ai.m4 >> Strings.ai
    m4 String.ad.m4 > Strings.ad
 
-   m4 Hashtable.ad.m4 > Hashtable.ad
-   echo "Import { \"Strings.ad\", \"HashAdapters.ad\", \"Hashtable.ad\" }" > Hashtables.ai
-   m4 Hashtables.ai.m4 >> Hashtables.ai
+   m4 GenerateHashtables0.ad.m4 > Hashtables0.ad
+   m4 GenerateHashtables0.ai.m4 > Hashtables0.ai
 
+   #m4 GenerateHashtables1.ad.m4 > Hashtables1.ad
 }
 
 ###################################################################################################################

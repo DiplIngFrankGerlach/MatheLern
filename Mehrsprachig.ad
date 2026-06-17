@@ -1,0 +1,13 @@
+
+
+class MehrsprachigeMeldung
+{
+methods:
+   MehrsprachigeMeldung();
+
+   int leseMeldungsDatei();
+
+   int setzeSprache(&String_16 sprache);
+
+   int findeMeldung(&String_16 schluessel,&String_16 meldungInSprache);
+};

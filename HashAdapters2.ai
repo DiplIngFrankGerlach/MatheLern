@@ -1,0 +1,12 @@
+Import
+{
+  "Strings.ad",
+  "Hashtable.ad",
+  "HashAdapters2.ad"
+}
+
+void Assigner_HT_String::assign(&SPHT_String_16_String_16* x1,
+                                &SPHT_String_16_String_16* x2)
+{
+  x1 = x2;   
+}

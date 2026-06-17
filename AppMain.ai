@@ -2,6 +2,8 @@ Import
 {
   "Strings.ad",
   "System.ad",
+  "HashAdapters0.ad",
+  "Hashtables0.ad",
   "Math.ad",
   "MiniFeistel.ad",
   "StarkerPseudoZufall.ad",
@@ -199,6 +201,28 @@ void Main::DivisionsTest()
 
 int Main::main()
 { 
+   var SPHT_LL_STR zahlZuZK;
+
+   for(var longlong i=0; i < 100;i = i + 4)
+   {
+      var String_16 zk("hans");
+      zk.append(i);
+
+      zahlZuZK.insert(i,zk);
+   }
+ 
+   var String_16 value;
+   var longlong key=16;
+   if(zahlZuZK.search(key,value) == 1) {pfc.fstr("gefunden: $").sa(value).pr(); }
+   else {pfc.fstr("FEHLER").pr(); }
+
+   key = 17;
+   if(zahlZuZK.search(key,value) == 1) {pfc.fstr("FEHLER 2").pr(); }
+
+   return 1;
+
+   
+ 
    do{
      pfc.fstr("################################################################").pr();
      pfc.fstr("################################################################").pr();
