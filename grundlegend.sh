@@ -101,7 +101,9 @@ erzeugeGenerischeKlassen()
    m4 GenerateHashtables0.ad.m4 > Hashtables0.ad
    m4 GenerateHashtables0.ai.m4 > Hashtables0.ai
 
-   #m4 GenerateHashtables1.ad.m4 > Hashtables1.ad
+   m4 GenerateHashtables1.ad.m4 > Hashtables1.ad
+   m4 GenerateHashtables1.ai.m4 > Hashtables1.ai
+
 }
 
 ###################################################################################################################

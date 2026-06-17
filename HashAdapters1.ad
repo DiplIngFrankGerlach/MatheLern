@@ -8,6 +8,6 @@
 class Assigner_HT_String
 {
 methods:
-         static void assign(&SPHT_String_16_String_16* x1,
-                            &SPHT_String_16_String_16* x2);
+         static void assign(&SPHT_STR_STR* x1,
+                            &SPHT_STR_STR* x2);
 };

@@ -13,6 +13,7 @@ determineStackMemoryNeeds.o \
 determStackMemory_AppMain.ai.o \
 determStackMemory_HashAdapters0.ai.o \
 determStackMemory_Hashtables0.ai.o \
+determStackMemory_Hashtables1.ai.o \
 determStackMemory_Math.ai.o \
 determStackMemory_MiniFeistel.ai.o \
 determStackMemory_StarkerPseudoZufall.ai.o \
@@ -21,11 +22,13 @@ determStackMemory_System.ai.o \
 determStackMemory_ZKNuetzlich.ai.o \
 HashAdapters0.o \
 Hashtables0.o \
+Hashtables1.o \
 Math.o \
 MiniFeistel.o \
 placementNewClass_AlphabeticSorter.o \
 placementNewClass_AlphaEntry.o \
 placementNewClass_Assigner_double.o \
+placementNewClass_Assigner_HT_String.o \
 placementNewClass_Assigner_int.o \
 placementNewClass_Assigner_longlong.o \
 placementNewClass_Assigner_String_128.o \
@@ -62,10 +65,12 @@ placementNewClass_Semaphore.o \
 placementNewClass_SemaphoreInfo.o \
 placementNewClass_SPHT_Entry_LL_STR.o \
 placementNewClass_SPHT_Entry_LL_STRP.o \
+placementNewClass_SPHT_Entry_SPHT_STR_HTS.o \
 placementNewClass_SPHT_Entry_STRP_STRP.o \
 placementNewClass_SPHT_Entry_STR_STR.o \
 placementNewClass_SPHT_LL_STR.o \
 placementNewClass_SPHT_LL_STRP.o \
+placementNewClass_SPHT_SPHT_STR_HTS.o \
 placementNewClass_SPHT_STRP_STRP.o \
 placementNewClass_SPHT_STR_STR.o \
 placementNewClass_SPRFile.o \
@@ -84,7 +89,7 @@ placementNewClass_ZKNuetzlich.o \
 StarkerPseudoZufall.o \
 Strings.o \
 System.o \
-ZKNuetzlich.o \
+ZKNuetzlich.o 
 
 CC = gcc
 HOMEDIR=/home/frank

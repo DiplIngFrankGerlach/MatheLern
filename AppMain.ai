@@ -38,8 +38,8 @@ void Main::AdditionsTest()
    var int ende = 0;
    do
    {
-     var int a = (spz.naechster() & 0xFFFFFF) % 10;
-     var int b = (spz.naechster() & 0xFFFFFF) % 10;
+     var int a = (spz.naechster() & 0xFFFFFF) % 51;
+     var int b = (spz.naechster() & 0xFFFFFF) % 51;
      var int summe = a + b;
      pfc.fstr("$+$=?").sa(a).sa(b).pr();
 
@@ -201,6 +201,7 @@ void Main::DivisionsTest()
 
 int Main::main()
 { 
+   /*
    var SPHT_STRP_STRP zahlZuZK;
 
    for(var longlong i=0; i < 100;i = i + 4)
@@ -224,6 +225,7 @@ int Main::main()
    if(zahlZuZK.search(key,value) == 1) {pfc.fstr("FEHLER 2").pr(); }
 
    return 1;
+   */
 
    
  
