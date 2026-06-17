@@ -1,0 +1,27 @@
+
+class MyMath
+{
+methods:
+    longlong faculty(longlong x);
+};
+
+class Main
+{
+   PrintfClass pfc;
+methods:
+   int istPrim(int x);
+   int main();
+
+   void MultTest();
+
+   void AdditionsTest();
+
+   void EinmaleinsMult();
+
+   void Erste100Primzahlen();
+
+   void Zehneruebergaenge();
+
+   void DivisionsTest();
+
+};

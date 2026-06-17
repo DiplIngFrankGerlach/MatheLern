@@ -1,0 +1,80 @@
+Import
+{
+ "Strings.ad",
+ "System.ad",
+ "MiniFeistel.ad", 
+ "StarkerPseudoZufall.ad"
+}
+
+StarkerPseudoZufall::StarkerPseudoZufall()
+{
+   var String_16 schluessel("VonDerVogelWeide_Kepler_Gauss_Leibniz");
+   mf = new MiniFeistel(schluessel,8);
+   
+   zustandLinks = 1;
+   zustandRechts = 1;
+
+   oktetsVorhanden = 0;
+
+}
+
+void StarkerPseudoZufall::initFromDevURandom()
+{
+  inline_cpp[[
+
+    int fd = open("/dev/urandom", O_RDONLY);
+    if (fd < 0)
+    {
+        perror("open");
+        ::exit(-1);
+    }
+
+    ssize_t bytes_read = read(fd, &zustandLinks,sizeof(zustandLinks));
+    if (bytes_read != sizeof(zustandLinks))
+    {
+        perror("read");
+        close(fd);
+        ::exit(-1);
+    }
+    bytes_read = read(fd, &zustandRechts,sizeof(zustandRechts));
+    if (bytes_read != sizeof(zustandRechts))
+    {
+        perror("read");
+        close(fd);
+        ::exit(-1);
+    }
+    close(fd);
+  ]]
+}
+
+int StarkerPseudoZufall::naechster()
+{
+   var int ret = 0;
+   var PrintfClass pfc;
+   for(var int i=0; i < 4; i++)
+   {
+      if(oktetsVorhanden == 0)
+      {
+         mf.encipher(zustandLinks,zustandRechts);
+         oktetsVorhanden = 16;
+         //pfc.fstr("MF: $ $").saHex(zustandLinks).saHex(zustandRechts).pr();
+      }
+      if(oktetsVorhanden > 8)
+      {
+        var int schub = (oktetsVorhanden - 8 - 1)*8;
+        var longlong oktet = (zustandLinks >> schub) & 0xff;
+        ret = ret ^ cast(int,oktet);
+        if(i < 3) { ret = ret << 8; }
+      } 
+      else
+      {
+        var int schub = (oktetsVorhanden  - 1)*8;
+        var longlong oktet = (zustandRechts >> schub) & 0xff;
+        ret = ret ^ cast(int,oktet);
+        if(i < 3) { ret = ret << 8; }
+      }
+      oktetsVorhanden = oktetsVorhanden - 1;
+   } 
+   return ret;
+}
+

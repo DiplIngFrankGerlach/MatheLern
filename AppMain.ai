@@ -1,0 +1,234 @@
+Import
+{
+  "Strings.ad",
+  "System.ad",
+  "Math.ad",
+  "MiniFeistel.ad",
+  "StarkerPseudoZufall.ad",
+  "AppMain.ad"
+}
+
+int Main::istPrim(int x)
+{
+   var int wurzel;
+   var Math m;
+   wurzel = cast(int,m.wurzel(x));
+
+   for( var int i=2; i <= wurzel; i++)
+   {
+      var int rest = x % i;
+      if(rest == 0) { return 0; }
+   }
+   return 1;
+}
+
+
+void Main::AdditionsTest()
+{
+   pfc.fstr("Zufaellige Aufgaben:").pr();
+   var StarkerPseudoZufall spz;
+
+   spz.initFromDevURandom();
+
+   var String_16 sprPuffer;
+   var int ende = 0;
+   do
+   {
+     var int a = (spz.naechster() & 0xFFFFFF) % 10;
+     var int b = (spz.naechster() & 0xFFFFFF) % 10;
+     var int summe = a + b;
+     pfc.fstr("$+$=?").sa(a).sa(b).pr();
+
+     pfc.fstr("Druecke E zum Beenden, sonst die Loesung").pr();
+     sprPuffer.clear();
+     var Input input;
+     input.getString(sprPuffer);  
+     if(sprPuffer.equals("E") == 1) {ende = 1; }
+     else
+     {
+        if(sprPuffer.asNumber() == summe )
+        {
+          pfc.fstr("Richtig").pr();
+        }
+        else
+        {
+          pfc.fstr("Falsch").pr();
+        }
+     }
+     
+   } 
+   while(ende == 0);
+}
+
+
+void Main::MultTest()
+{
+   pfc.fstr("Zufaellige Aufgaben:").pr();
+   var StarkerPseudoZufall spz;
+   spz.initFromDevURandom();
+
+   var String_16 sprPuffer;
+   var int ende = 0;
+   do
+   {
+     var int a = (spz.naechster() & 0xFFFFFF) % 10;
+     var int b = (spz.naechster() & 0xFFFFFF) % 10;
+     var int prod = a * b;
+     pfc.fstr("$*$=?").sa(a).sa(b).pr();
+
+     pfc.fstr("Druecke E zum Beenden, sonst die Loesung").pr();
+     sprPuffer.clear();
+     var Input input;
+     input.getString(sprPuffer);  
+     if(sprPuffer.equals("E") == 1) {ende = 1; }
+     else
+     {
+        if(sprPuffer.asNumber() == prod )
+        {
+          pfc.fstr("Richtig").pr();
+        }
+        else
+        {
+          pfc.fstr("Falsch").pr();
+        }
+     }
+     
+   } 
+   while(ende == 0);
+
+}
+
+void Main::Zehneruebergaenge()
+{
+   pfc.fstr("ZehnerUebergaenge:").pr();
+   var StarkerPseudoZufall spz;
+   spz.initFromDevURandom();
+   for(var int i=2; i <= 9; i++)
+   {
+      var int summe;
+      do {
+         var int r = (spz.naechster() & 0xFFFFFF) % 10;
+         r = r % 10;
+         summe = i + r;
+         if(summe > 10)
+         { 
+            var int rest = summe - 10;
+            var int bis10 = 10 - i;
+            pfc.fstr("$+$=$+$+$=$").sa(i).sa(r).sa(i).sa(bis10).sa(rest).sa(summe).pr();
+         }
+      }
+      while( summe < 10);
+   }
+}
+
+
+void Main::EinmaleinsMult()
+{
+   pfc.fstr("Das kleine Einmaleins der Multiplikation:").pr();
+   for(var int i=0; i <= 20;i++)
+   {
+      for(var int j=0; j <= 20;j++)
+      {
+        var int produkt = i*j;
+        pfc.fstr("$*$=$").sa(i).sa(j).sa(produkt).pr();
+      }
+   }
+}
+
+void Main::Erste100Primzahlen()
+{
+   pfc.fstr("Erste 100 Primzahlen:").pr();
+   var int primAnzahl = 1;
+   
+   pfc.fstr("2").pr();
+
+   var Main am;
+   var int i=3;
+   do
+   {
+      if(am.istPrim(i) == 1)
+      {
+         pfc.fstr("$").sa(i).pr();
+         primAnzahl++;
+      }
+      i++;
+   }
+   while(primAnzahl < 100);
+}
+
+void Main::DivisionsTest()
+{
+   pfc.fstr("Zufaellige Aufgaben:").pr();
+   var StarkerPseudoZufall spz;
+
+   spz.initFromDevURandom();
+
+   var String_16 sprPuffer;
+   var int ende = 0;
+   do
+   {
+     var int a = (spz.naechster() & 0xFFFFFF) % 30;
+     var int b = (spz.naechster() & 0xFFFFFF) % 30;
+     if(b == 0) { b = 1; }
+     var int quotient = a / b;
+     pfc.fstr("$/$=?").sa(a).sa(b).pr();
+
+     pfc.fstr("Druecke E zum Beenden, sonst die Loesung").pr();
+     sprPuffer.clear();
+     var Input input;
+     input.getString(sprPuffer);  
+     if(sprPuffer.equals("E") == 1) {ende = 1; }
+     else
+     {
+        if(sprPuffer.asNumber() == quotient )
+        {
+          pfc.fstr("Richtig").pr();
+        }
+        else
+        {
+          pfc.fstr("Falsch").pr();
+        }
+     }
+     
+   } 
+   while(ende == 0);
+}
+
+
+int Main::main()
+{ 
+   do{
+     pfc.fstr("################################################################").pr();
+     pfc.fstr("################################################################").pr();
+     pfc.fstr("Wähle aus:").pr();
+     pfc.fstr("Additions-Test=AT").pr();
+     pfc.fstr("Multiplikations-Test=MT").pr();
+     pfc.fstr("Einmaleins-Multiplikation=EM").pr();
+     pfc.fstr("Erste 100 Primzahlen=EP").pr();
+     pfc.fstr("Zehneruebergaenge=ZU").pr();
+     pfc.fstr("Divisionstest=DT").pr();
+     pfc.fstr("Abbruch: CTRL-C").pr();
+
+     var Input inp;
+
+     var String_16 eingabe;
+     inp.getString(eingabe);
+   
+
+     if(eingabe.equals("AT")) { this.AdditionsTest(); }
+
+     if(eingabe.equals("EM")) { this.EinmaleinsMult(); }
+
+     if(eingabe.equals("EP")) { this.Erste100Primzahlen(); }
+
+     if(eingabe.equals("ZU")) { this.Zehneruebergaenge(); }
+
+     if(eingabe.equals("MT")) { this.MultTest(); }
+
+     if(eingabe.equals("DT")) { this.DivisionsTest(); }
+   }
+   while(1==1);
+   
+   return 1;
+}
+

@@ -1,0 +1,15 @@
+
+
+//Strong PRNG
+
+class StarkerPseudoZufall
+{ 
+    MiniFeistel* mf;
+    longlong zustandLinks;
+    longlong zustandRechts;
+    int oktetsVorhanden;
+methods:
+    StarkerPseudoZufall();
+    void initFromDevURandom();
+    int naechster();
+};
