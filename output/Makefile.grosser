@@ -65,12 +65,12 @@ placementNewClass_Semaphore.o \
 placementNewClass_SemaphoreInfo.o \
 placementNewClass_SPHT_Entry_LL_STR.o \
 placementNewClass_SPHT_Entry_LL_STRP.o \
-placementNewClass_SPHT_Entry_SPHT_STR_HTS.o \
+placementNewClass_SPHT_Entry_STR_HTS.o \
 placementNewClass_SPHT_Entry_STRP_STRP.o \
 placementNewClass_SPHT_Entry_STR_STR.o \
 placementNewClass_SPHT_LL_STR.o \
 placementNewClass_SPHT_LL_STRP.o \
-placementNewClass_SPHT_SPHT_STR_HTS.o \
+placementNewClass_SPHT_STR_HTS.o \
 placementNewClass_SPHT_STRP_STRP.o \
 placementNewClass_SPHT_STR_STR.o \
 placementNewClass_SPRFile.o \
@@ -89,7 +89,7 @@ placementNewClass_ZKNuetzlich.o \
 StarkerPseudoZufall.o \
 Strings.o \
 System.o \
-ZKNuetzlich.o 
+ZKNuetzlich.o \
 
 CC = gcc
 HOMEDIR=/home/frank

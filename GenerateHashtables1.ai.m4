@@ -18,4 +18,4 @@ void Assigner_HT_String::assign(&SPHT_STR_STR* x1, &SPHT_STR_STR* x2)
    x1 = x2;
 }
 
-SPHT_IMPL(SPHT_STR_HTS,String_16,SPHT_STR_STR*,Hash_String_16,Compare_String_16,Assigner_String_16,Assigner_HT_String)
+SPHT_IMPL(STR_HTS,String_16,SPHT_STR_STR*,Hash_String_16,Compare_String_16,Assigner_String_16,Assigner_HT_String)

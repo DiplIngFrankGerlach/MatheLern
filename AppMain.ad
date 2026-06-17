@@ -24,4 +24,6 @@ methods:
 
    void DivisionsTest();
 
+   void InternerTest();
+
 };

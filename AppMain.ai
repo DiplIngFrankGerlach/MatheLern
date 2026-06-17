@@ -4,6 +4,7 @@ Import
   "System.ad",
   "HashAdapters0.ad",
   "Hashtables0.ad",
+  "Hashtables1.ad",
   "Math.ad",
   "MiniFeistel.ad",
   "StarkerPseudoZufall.ad",
@@ -199,9 +200,8 @@ void Main::DivisionsTest()
 }
 
 
-int Main::main()
-{ 
-   /*
+void Main::InternerTest()
+{
    var SPHT_STRP_STRP zahlZuZK;
 
    for(var longlong i=0; i < 100;i = i + 4)
@@ -224,7 +224,51 @@ int Main::main()
    key = new String_16("schl_17");
    if(zahlZuZK.search(key,value) == 1) {pfc.fstr("FEHLER 2").pr(); }
 
-   return 1;
+   var SPHT_STR_STR* htStS = new SPHT_STR_STR;
+
+   var String_16 schluessel;
+   var String_16 wert;
+   schluessel.assign("Hund");
+   wert.assign("Bello");
+   htStS.insert(schluessel, wert); 
+   schluessel.assign("Katze");
+   wert.assign("Mia");
+   htStS.insert(schluessel, wert); 
+
+   var SPHT_STR_STR* htStS2 = new SPHT_STR_STR;
+
+   schluessel.assign("Apfel");
+   wert.assign("Elstar");
+   htStS2.insert(schluessel, wert); 
+   schluessel.assign("Birne");
+   wert.assign("Emma");
+   htStS2.insert(schluessel, wert); 
+
+   var SPHT_STR_HTS htTop;
+   schluessel.assign("Haustiere");
+   htTop.insert(schluessel,htStS); 
+   schluessel.assign("Fruechte");
+   htTop.insert(schluessel,htStS2); 
+
+   var SPHT_STR_STR* htRet;
+
+   schluessel.assign("Haustiere");
+   if(htTop.search(schluessel,htRet) != 1) { pfc.fstr("Fehler3").pr(); }
+   else
+   {
+       schluessel.assign("Hund");
+       wert.clear();
+       if(htRet.search(schluessel,wert) != 1) { pfc.fstr("Fehler4").pr(); }
+       if(wert.equals("Bello") != 1) { pfc.fstr("Fehler5").pr(); }
+       pfc.fstr("Erfolg").pr();
+   }
+   
+
+}
+
+int Main::main()
+{ 
+   /*
    */
 
    
@@ -239,6 +283,7 @@ int Main::main()
      pfc.fstr("Erste 100 Primzahlen=EP").pr();
      pfc.fstr("Zehneruebergaenge=ZU").pr();
      pfc.fstr("Divisionstest=DT").pr();
+     pfc.fstr("Interner Test=IT").pr();
      pfc.fstr("Abbruch: CTRL-C").pr();
 
      var Input inp;
@@ -258,6 +303,8 @@ int Main::main()
      if(eingabe.equals("MT")) { this.MultTest(); }
 
      if(eingabe.equals("DT")) { this.DivisionsTest(); }
+
+     if(eingabe.equals("IT")) { this.InternerTest(); }
    }
    while(1==1);
    
