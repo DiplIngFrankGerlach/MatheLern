@@ -8,6 +8,8 @@ Import
   "AppMain.ad"
 }
 
+//test
+
 int Main::istPrim(int x)
 {
    var int wurzel;

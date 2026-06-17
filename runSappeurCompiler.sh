@@ -59,8 +59,9 @@ compile StarkerPseudoZufall.ai
 
 compile MiniFeistel.ai
 
+compile Hashtables.ai
 
-
+compile HashAdapters.ai
 
 
 ###################################################################################################################
