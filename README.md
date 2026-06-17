@@ -21,9 +21,9 @@ Compiler: https://sappeur.di-fg.de
 
 Lizenz: MIT, Siehe Urheberrecht.txt in diesem Projekt
 
-##Other languages:
+## Other languages:
 
-##Mathematics Training Program
+## Mathematics Training Program
 
 * Addition test
 * Multiplication test
@@ -31,7 +31,7 @@ Lizenz: MIT, Siehe Urheberrecht.txt in diesem Projekt
 * First 100 prime numbers
 * Crossing the tens boundary
 
-##Programme de pratique des mathématiques pour l'école primaire 
+## Programme de pratique des mathématiques pour l'école primaire 
 
 * Test d'addition
 * Test de multiplication
