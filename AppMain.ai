@@ -201,22 +201,26 @@ void Main::DivisionsTest()
 
 int Main::main()
 { 
-   var SPHT_LL_STR zahlZuZK;
+   var SPHT_STRP_STRP zahlZuZK;
 
    for(var longlong i=0; i < 100;i = i + 4)
    {
-      var String_16 zk("hans");
+      var String_16* zk= new String_16("hans");
       zk.append(i);
 
-      zahlZuZK.insert(i,zk);
+      var String_16* schluessel = new String_16;
+      schluessel.append("schl_");
+      schluessel.append(i);
+
+      zahlZuZK.insert(schluessel,zk);
    }
  
-   var String_16 value;
-   var longlong key=16;
+   var String_16* value = new String_16;
+   var String_16* key=new String_16("schl_16");
    if(zahlZuZK.search(key,value) == 1) {pfc.fstr("gefunden: $").sa(value).pr(); }
    else {pfc.fstr("FEHLER").pr(); }
 
-   key = 17;
+   key = new String_16("schl_17");
    if(zahlZuZK.search(key,value) == 1) {pfc.fstr("FEHLER 2").pr(); }
 
    return 1;
