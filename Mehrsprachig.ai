@@ -1,0 +1,94 @@
+Import
+{
+  "Strings.ad",
+  "System.ad",
+  "CSVLeser.ad",
+  "Hashtables0.ad",
+  "Hashtables1.ad",
+  "Mehrsprachig.ad"
+}
+
+MehrsprachigeMeldung::MehrsprachigeMeldung()
+{
+  var String_16 pfad;
+  inline_cpp[[
+     char* homedir = ::getenv("HOME");
+     if(homedir != NULL )
+     {
+       int i=0;
+       char schnuller;
+       while(homedir[i] != 0) { pfad.append(&schnuller,homedir[i]); i++; }
+     }
+  ]]
+  pfad.append("/MatheLern_Meldungen.csv");
+  if( pfad.length() > 0)
+  {
+     csvLeser = new CSVLeser(pfad,';');   
+     if(csvLeser.dateiOffen() != 1)
+     {
+        pfc.fstr("Could not read the message file in $").sa(pfad).pr();
+        csvLeser = NULL;
+     }
+  }
+  else
+  {
+    pfc.fstr("Could not determine path for message file(1)").pr();
+  }
+}
+
+int MehrsprachigeMeldung::leseMeldungsDatei()
+{
+   if(csvLeser != NULL)
+   {
+     var int anzSpalten = -1;
+     var String_16 sprachen[64];
+     var int anzSprachen;
+     if(csvLeser.leseZeile(sprachen,anzSpalten) == 1)
+     {
+       anzSprachen = anzSpalten;
+       for(var int i=0; i < anzSprachen; i++)
+       {
+         var SPHT_STR_STR* oneLanguage = new SPHT_STR_STR;
+         alleMeldungen.insert(sprachen[i],oneLanguage);
+       }
+     }
+     else { return 0; }
+
+     var String_16 eineUebersetzung[64];
+     while(csvLeser.leseZeile(eineUebersetzung,anzSpalten) == 1)
+     {
+         var String_16 sprache;
+         for(var int i=1; i < anzSprachen; i++)
+         {
+            sprache.assign(sprachen[i]);
+            var SPHT_STR_STR* theLanguage;
+            if(alleMeldungen.search(sprache,theLanguage) == 1)
+            {
+                theLanguage.insert(eineUebersetzung[0],eineUebersetzung[i]);
+            }
+            else { pfc.fstr("interner Fehler leseMeldungsDatei()").pr(); }
+         }
+     }
+     return 1;
+   }
+   return 0;
+}
+
+int MehrsprachigeMeldung::setzeSprache(&String_16 sprache)
+{
+   aktuelleSprache.assign(sprache);
+   if(alleMeldungen.search(sprache,meldungenInAktuellerSprache) == 1) { return 1; }
+   return 0;
+}
+
+
+int MehrsprachigeMeldung::findeMeldung(&String_16 schluessel,&String_16 meldungInSprache)
+{
+   if( meldungenInAktuellerSprache != NULL)
+   {
+        if( meldungenInAktuellerSprache.search(schluessel,meldungInSprache) == 1) 
+        { return 1; }
+   }   
+   return 0;
+}
+

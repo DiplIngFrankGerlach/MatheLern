@@ -64,6 +64,10 @@ compile Hashtables0.ai
 compile HashAdapters0.ai
 
 compile Hashtables1.ai
+
+compile Mehrsprachig.ai
+
+compile CSVLeser.ai
 ###################################################################################################################
 # erzeuge die Stack Memory Bestimmung
 #####################################

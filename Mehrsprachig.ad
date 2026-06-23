@@ -2,6 +2,11 @@
 
 class MehrsprachigeMeldung
 {
+   SPHT_STR_HTS alleMeldungen;
+   String_16 aktuelleSprache;
+   SPHT_STR_STR* meldungenInAktuellerSprache;
+   CSVLeser* csvLeser;
+   PrintfClass pfc;
 methods:
    MehrsprachigeMeldung();
 

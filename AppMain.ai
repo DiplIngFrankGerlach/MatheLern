@@ -2,12 +2,14 @@ Import
 {
   "Strings.ad",
   "System.ad",
+  "CSVLeser.ad",
   "HashAdapters0.ad",
   "Hashtables0.ad",
   "Hashtables1.ad",
   "Math.ad",
   "MiniFeistel.ad",
   "StarkerPseudoZufall.ad",
+  "Mehrsprachig.ad",
   "AppMain.ad"
 }
 
@@ -270,6 +272,23 @@ int Main::main()
 { 
    /*
    */
+
+
+   var MehrsprachigeMeldung mesm;
+   if(mesm.leseMeldungsDatei() == 1) 
+   {
+        var String_16 sprache("Deutsch");
+        if(mesm.setzeSprache(sprache) == 1)
+        { 
+           var String_16 schluessel("Additions_Test_Kommando");
+           var String_16 meldung;
+           if(mesm.findeMeldung(schluessel,meldung) == 1)
+           {
+              pfc.fstr("Meldung ist: $").sa(meldung).pr();
+           }
+        }
+   } 
+   return 1;
 
    
  
