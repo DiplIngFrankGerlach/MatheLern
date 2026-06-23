@@ -9,12 +9,15 @@ main.o \
 ProjektCPP.o \
 mapping.o \
 AppMain.o \
+CSVLeser.o \
 determineStackMemoryNeeds.o \
 determStackMemory_AppMain.ai.o \
+determStackMemory_CSVLeser.ai.o \
 determStackMemory_HashAdapters0.ai.o \
 determStackMemory_Hashtables0.ai.o \
 determStackMemory_Hashtables1.ai.o \
 determStackMemory_Math.ai.o \
+determStackMemory_Mehrsprachig.ai.o \
 determStackMemory_MiniFeistel.ai.o \
 determStackMemory_StarkerPseudoZufall.ai.o \
 determStackMemory_Strings.ai.o \
@@ -24,6 +27,7 @@ HashAdapters0.o \
 Hashtables0.o \
 Hashtables1.o \
 Math.o \
+Mehrsprachig.o \
 MiniFeistel.o \
 placementNewClass_AlphabeticSorter.o \
 placementNewClass_AlphaEntry.o \
@@ -42,17 +46,19 @@ placementNewClass_Compare_String_128.o \
 placementNewClass_Compare_String_16.o \
 placementNewClass_Compare_STRP.o \
 placementNewClass_Complex.o \
-placementNewClass_Hashable4.o \
+placementNewClass_CSVLeser.o \
 placementNewClass_Hash_int.o \
 placementNewClass_Hash_longlong.o \
 placementNewClass_Hash_String_128.o \
 placementNewClass_Hash_String_16.o \
 placementNewClass_Hash_STRP.o \
+placementNewClass_Hashable4.o \
 placementNewClass_HexPrinter.o \
 placementNewClass_Input.o \
 placementNewClass_KeyType4.o \
 placementNewClass_Main.o \
 placementNewClass_Math.o \
+placementNewClass_MehrsprachigeMeldung.o \
 placementNewClass_MiniFeistel.o \
 placementNewClass_MTSuperClass.o \
 placementNewClass_MultiThreadAdmin.o \
@@ -66,13 +72,13 @@ placementNewClass_SemaphoreInfo.o \
 placementNewClass_SPHT_Entry_LL_STR.o \
 placementNewClass_SPHT_Entry_LL_STRP.o \
 placementNewClass_SPHT_Entry_STR_HTS.o \
-placementNewClass_SPHT_Entry_STRP_STRP.o \
 placementNewClass_SPHT_Entry_STR_STR.o \
+placementNewClass_SPHT_Entry_STRP_STRP.o \
 placementNewClass_SPHT_LL_STR.o \
 placementNewClass_SPHT_LL_STRP.o \
 placementNewClass_SPHT_STR_HTS.o \
-placementNewClass_SPHT_STRP_STRP.o \
 placementNewClass_SPHT_STR_STR.o \
+placementNewClass_SPHT_STRP_STRP.o \
 placementNewClass_SPRFile.o \
 placementNewClass_StarkerPseudoZufall.o \
 placementNewClass_String_128.o \
@@ -90,6 +96,7 @@ StarkerPseudoZufall.o \
 Strings.o \
 System.o \
 ZKNuetzlich.o \
+
 
 CC = gcc
 HOMEDIR=/Users/fg
