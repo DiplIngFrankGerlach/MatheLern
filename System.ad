@@ -63,6 +63,8 @@ methods:
       
    //actually print the string to the console
    void pr();
+
+   void pr(&String_16 message);
    
    //print a verbatim string immediately
    void pr(&char text[]);

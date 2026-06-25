@@ -8,6 +8,7 @@ methods:
 class Main
 {
    PrintfClass pfc;
+   MehrsprachigeMeldung* mesm;
 methods:
    int istPrim(int x);
    int main();
@@ -25,5 +26,7 @@ methods:
    void DivisionsTest();
 
    void InternerTest();
+
+   void druckeMeldung(&char schluessel[]);
 
 };

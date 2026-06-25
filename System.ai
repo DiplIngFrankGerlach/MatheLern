@@ -243,6 +243,11 @@ void PrintfClass::pr(&char text[])
    this.fstr(text).pr();
 }
 
+void PrintfClass::pr(&String_16 text)
+{
+   this.fstr("$").sa(text).pr();
+}
+
 
 
 

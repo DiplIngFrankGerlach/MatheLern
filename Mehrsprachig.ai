@@ -34,6 +34,7 @@ MehrsprachigeMeldung::MehrsprachigeMeldung()
   {
     pfc.fstr("Could not determine path for message file(1)").pr();
   }
+
 }
 
 int MehrsprachigeMeldung::leseMeldungsDatei()
@@ -69,6 +70,10 @@ int MehrsprachigeMeldung::leseMeldungsDatei()
             else { pfc.fstr("interner Fehler leseMeldungsDatei()").pr(); }
          }
      }
+     var String_16 sprache;
+  
+     this.bestimmeSprache(sprache);
+     this.setzeSprache(sprache);
      return 1;
    }
    return 0;
@@ -78,6 +83,7 @@ int MehrsprachigeMeldung::setzeSprache(&String_16 sprache)
 {
    aktuelleSprache.assign(sprache);
    if(alleMeldungen.search(sprache,meldungenInAktuellerSprache) == 1) { return 1; }
+   pfc.fstr("konnte Sprache '$' nicht finden").sa(sprache).pr();
    return 0;
 }
 
@@ -89,6 +95,53 @@ int MehrsprachigeMeldung::findeMeldung(&String_16 schluessel,&String_16 meldungI
         if( meldungenInAktuellerSprache.search(schluessel,meldungInSprache) == 1) 
         { return 1; }
    }   
+   meldungInSprache.assign("Meldung Nicht Gefunden");
    return 0;
 }
 
+int MehrsprachigeMeldung::findeMeldung(&char schluessel[],&String_16 meldungInSprache)
+{
+   var String_16 schlStr(schluessel);
+
+   return this.findeMeldung(schlStr,meldungInSprache);
+}
+
+void MehrsprachigeMeldung::bestimmeSprache(&String_16 sprache)
+{
+  inline_cpp[[
+
+   const char *lang;
+
+    lang = ::getenv("LC_ALL");
+    if((lang == NULL) || (*lang == '\0'))
+    {
+        lang = ::getenv("LC_MESSAGES");
+    }
+
+    if((lang == NULL) || (*lang == '\0'))
+    {
+        lang = ::getenv("LANG");
+    }
+
+    if(lang == NULL)
+    {
+        lang = "C";
+    }
+
+    char schnuller;
+    int i=0; 
+    while((i < 100) && (lang[i] != 0) )
+    {
+      sprache.append(&schnuller,lang[i]);
+      i++; 
+    }
+
+  ]]
+  var *String_16 spalten[] = new String_16[2];
+  if(sprache.teileAuf(spalten,'.') == 1)
+  {
+    sprache.assign(spalten[0]);
+  }
+  //pfc.fstr("Sprache ist $").sa(sprache).pr();
+
+}

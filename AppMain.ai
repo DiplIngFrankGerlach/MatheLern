@@ -32,7 +32,7 @@ int Main::istPrim(int x)
 
 void Main::AdditionsTest()
 {
-   pfc.fstr("Zufaellige Aufgaben:").pr();
+   this.druckeMeldung("ZufaelligeAufgaben");
    var StarkerPseudoZufall spz;
 
    spz.initFromDevURandom();
@@ -46,7 +46,8 @@ void Main::AdditionsTest()
      var int summe = a + b;
      pfc.fstr("$+$=?").sa(a).sa(b).pr();
 
-     pfc.fstr("Druecke E zum Beenden, sonst die Loesung").pr();
+     this.druckeMeldung("DrueckeEZumBeendenSonstLoesung");
+
      sprPuffer.clear();
      var Input input;
      input.getString(sprPuffer);  
@@ -55,11 +56,11 @@ void Main::AdditionsTest()
      {
         if(sprPuffer.asNumber() == summe )
         {
-          pfc.fstr("Richtig").pr();
+           this.druckeMeldung("Richtig");
         }
         else
         {
-          pfc.fstr("Falsch").pr();
+           this.druckeMeldung("Falsch");
         }
      }
      
@@ -70,7 +71,7 @@ void Main::AdditionsTest()
 
 void Main::MultTest()
 {
-   pfc.fstr("Zufaellige Aufgaben:").pr();
+   this.druckeMeldung("ZufaelligeAufgaben");
    var StarkerPseudoZufall spz;
    spz.initFromDevURandom();
 
@@ -83,7 +84,7 @@ void Main::MultTest()
      var int prod = a * b;
      pfc.fstr("$*$=?").sa(a).sa(b).pr();
 
-     pfc.fstr("Druecke E zum Beenden, sonst die Loesung").pr();
+     this.druckeMeldung("DrueckeEZumBeendenSonstLoesung");
      sprPuffer.clear();
      var Input input;
      input.getString(sprPuffer);  
@@ -92,11 +93,11 @@ void Main::MultTest()
      {
         if(sprPuffer.asNumber() == prod )
         {
-          pfc.fstr("Richtig").pr();
+          this.druckeMeldung("Richtig");
         }
         else
         {
-          pfc.fstr("Falsch").pr();
+          this.druckeMeldung("Falsch");
         }
      }
      
@@ -107,7 +108,7 @@ void Main::MultTest()
 
 void Main::Zehneruebergaenge()
 {
-   pfc.fstr("ZehnerUebergaenge:").pr();
+   this.druckeMeldung("ZehnerUebergaenge");
    var StarkerPseudoZufall spz;
    spz.initFromDevURandom();
    for(var int i=2; i <= 9; i++)
@@ -131,7 +132,7 @@ void Main::Zehneruebergaenge()
 
 void Main::EinmaleinsMult()
 {
-   pfc.fstr("Das kleine Einmaleins der Multiplikation:").pr();
+   this.druckeMeldung("Das_kleine_Einmaleins_der_Multiplikation");
    for(var int i=0; i <= 20;i++)
    {
       for(var int j=0; j <= 20;j++)
@@ -144,7 +145,7 @@ void Main::EinmaleinsMult()
 
 void Main::Erste100Primzahlen()
 {
-   pfc.fstr("Erste 100 Primzahlen:").pr();
+   this.druckeMeldung("Erste_100_Primzahlen");
    var int primAnzahl = 1;
    
    pfc.fstr("2").pr();
@@ -165,7 +166,7 @@ void Main::Erste100Primzahlen()
 
 void Main::DivisionsTest()
 {
-   pfc.fstr("Zufaellige Aufgaben:").pr();
+   this.druckeMeldung("ZufaelligeAufgaben");
    var StarkerPseudoZufall spz;
 
    spz.initFromDevURandom();
@@ -180,7 +181,7 @@ void Main::DivisionsTest()
      var int quotient = a / b;
      pfc.fstr("$/$=?").sa(a).sa(b).pr();
 
-     pfc.fstr("Druecke E zum Beenden, sonst die Loesung").pr();
+     this.druckeMeldung("DrueckeEZumBeendenSonstLoesung");
      sprPuffer.clear();
      var Input input;
      input.getString(sprPuffer);  
@@ -189,11 +190,11 @@ void Main::DivisionsTest()
      {
         if(sprPuffer.asNumber() == quotient )
         {
-          pfc.fstr("Richtig").pr();
+          this.druckeMeldung("Richtig");
         }
         else
         {
-          pfc.fstr("Falsch").pr();
+          this.druckeMeldung("Falsch");
         }
      }
      
@@ -268,42 +269,37 @@ void Main::InternerTest()
 
 }
 
+void Main::druckeMeldung(&char schluessel[])
+{
+   var String_16 meldung;
+   mesm.findeMeldung(schluessel,meldung);
+   pfc.pr(meldung);
+}
+
 int Main::main()
 { 
    /*
    */
+ 
+   mesm = new MehrsprachigeMeldung;
 
-
-   var MehrsprachigeMeldung mesm;
    if(mesm.leseMeldungsDatei() == 1) 
    {
-        var String_16 sprache("Deutsch");
-        if(mesm.setzeSprache(sprache) == 1)
-        { 
-           var String_16 schluessel("Additions_Test_Kommando");
-           var String_16 meldung;
-           if(mesm.findeMeldung(schluessel,meldung) == 1)
-           {
-              pfc.fstr("Meldung ist: $").sa(meldung).pr();
-           }
-        }
    } 
-   return 1;
-
-   
+   else { pfc.pr("konnte Meldungsdatei nicht lesen"); return -1; }
  
    do{
      pfc.fstr("################################################################").pr();
      pfc.fstr("################################################################").pr();
-     pfc.fstr("Wähle aus:").pr();
-     pfc.fstr("Additions-Test=AT").pr();
-     pfc.fstr("Multiplikations-Test=MT").pr();
-     pfc.fstr("Einmaleins-Multiplikation=EM").pr();
-     pfc.fstr("Erste 100 Primzahlen=EP").pr();
-     pfc.fstr("Zehneruebergaenge=ZU").pr();
-     pfc.fstr("Divisionstest=DT").pr();
-     pfc.fstr("Interner Test=IT").pr();
-     pfc.fstr("Abbruch: CTRL-C").pr();
+     this.druckeMeldung("Waehle_aus");
+     this.druckeMeldung("Additions_Test_Kommando");
+     this.druckeMeldung("Multiplikations_Test_Kommando");
+     this.druckeMeldung("Einmaleins_Test_Kommando");
+     this.druckeMeldung("Erste_100_Primzahlen_Kommando");
+     this.druckeMeldung("Zehneruebergaenge_Kommando");
+     this.druckeMeldung("Division_Test_Kommando");
+     pfc.pr("Interner Test=IT");
+     this.druckeMeldung("Abbruch_Kommando");
 
      var Input inp;
 

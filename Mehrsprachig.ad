@@ -15,4 +15,8 @@ methods:
    int setzeSprache(&String_16 sprache);
 
    int findeMeldung(&String_16 schluessel,&String_16 meldungInSprache);
+
+   int findeMeldung(&char schluessel[],&String_16 meldungInSprache);
+
+   void bestimmeSprache(&String_16 sprache);
 };
